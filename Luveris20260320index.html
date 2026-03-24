@@ -1,0 +1,825 @@
+HTML
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>罗维思实业（上海）有限公司 - 管路+泵类产品专业供应商</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "Arial", sans-serif;
+        }
+        body {
+            background-color: #f7f8fa;
+            color: #333;
+            line-height: 1.7;
+        }
+        /* 导航栏+语言切换 */
+        header {
+            background-color: #1f2937;
+            color: white;
+            padding: 16px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+        .lang-btn {
+            padding: 6px 12px;
+            border: 1px solid #4b5563;
+            border-radius: 4px;
+            background-color: #374151;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        .lang-btn.active {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .lang-btn:hover {
+            background-color: #4b5563;
+        }
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #3b82f6;
+        }
+        /* 横幅 */
+        .banner {
+            background-color: #111827;
+            color: white;
+            padding: 90px 5%;
+            text-align: center;
+            background-image: linear-gradient(rgba(17,24,39,0.9), rgba(17,24,39,0.9));
+            background-size: cover;
+            background-position: center;
+        }
+        .banner h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .banner .brand-note {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        .banner p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 35px;
+            color: #d1d5db;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: #3b82f6;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
+        /* 通用容器 */
+        .container {
+            max-width: 1400px;
+            margin: 70px auto;
+            padding: 0 5%;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 32px;
+            color: #1f2937;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+        /* 泵类标题下划线为天蓝色 */
+        .pump-title h2::after {
+            background-color: #87CEEB;
+        }
+        .section-title p {
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 16px;
+        }
+        /* 产品卡片通用 */
+        .product-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.09);
+        }
+        .product-img {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 16px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        /* 管路产品图片区底色 */
+        .pipe-img {
+            background-color: #e5e7eb;
+        }
+        /* 泵类产品图片区天蓝色底色 */
+        .pump-img {
+            background-color: #E6F7FF;
+            color: #1890FF;
+        }
+        .product-info {
+            padding: 25px;
+        }
+        .product-info h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1f2937;
+            font-weight: 600;
+        }
+        /* 管路规格色-商务蓝 */
+        .pipe-spec {
+            font-size: 13px;
+            color: #3b82f6;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+        /* 泵类规格色-天蓝色 */
+        .pump-spec {
+            font-size: 13px;
+            color: #1890FF;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+        .product-info p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        /* 核心优势 */
+        .advantage {
+            background-color: white;
+            padding: 80px 5%;
+            margin: 50px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .advantage-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .item {
+            flex: 1;
+            min-width: 260px;
+            text-align: center;
+            padding: 15px;
+        }
+        .item-icon {
+            font-size: 36px;
+            color: #3b82f6;
+            margin-bottom: 20px;
+        }
+        .item h4 {
+            font-size: 20px;
+            margin: 0 0 12px;
+            color: #1f2937;
+        }
+        .item p {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+        /* 底部 */
+        footer {
+            background-color: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 40px 5%;
+            font-size: 14px;
+            margin-top: 50px;
+        }
+        footer p {
+            line-height: 1.8;
+        }
+        footer .copyright {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+        /* 回到顶部 */
+        .back-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.3);
+        }
+        .back-top:hover {
+            background-color: #2563eb;
+        }
+        /* 语言模块隐藏/显示 */
+        .cn-content {
+            display: block;
+        }
+        .en-content {
+            display: none;
+        }
+        body.en .cn-content {
+            display: none;
+        }
+        body.en .en-content {
+            display: block;
+        }
+        body.en .logo-en {
+            display: block;
+        }
+        body.en .logo-cn {
+            display: none;
+        }
+        .logo-cn {
+            display: block;
+        }
+        .logo-en {
+            display: none;
+        }
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .banner h1 {
+                font-size: 28px;
+            }
+            .banner p {
+                font-size: 16px;
+            }
+            .section-title h2 {
+                font-size: 26px;
+            }
+            .product-box {
+                grid-template-columns: 1fr;
+            }
+            .advantage-list {
+                gap: 25px;
+            }
+            .logo {
+                font-size: 20px;
+            }
+        }
+    </style>
+    <script>
+        // 语言切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const cnBtn = document.getElementById('cnBtn');
+            const enBtn = document.getElementById('enBtn');
+            const body = document.body;
+
+            cnBtn.addEventListener('click', function() {
+                body.className = 'cn';
+                cnBtn.classList.add('active');
+                enBtn.classList.remove('active');
+                document.title = '罗维思实业（上海）有限公司 - 管路+泵类产品专业供应商';
+            });
+
+            enBtn.addEventListener('click', function() {
+                body.className = 'en';
+                enBtn.classList.add('active');
+                cnBtn.classList.remove('active');
+                document.title = 'Luveris Industrial (Shanghai) Co., Ltd - Professional Pipe & Pump Supplier';
+            });
+        });
+    </script>
+</head>
+<body class="cn">
+<!-- 回到顶部 -->
+<a href="#home" class="back-top">↑</a>
+
+<!-- 导航 -->
+<header>
+    <div class="nav">
+        <div class="logo">
+            <span class="logo-cn">罗维思实业</span>
+            <span class="logo-en">Luveris Industrial</span>
+        </div>
+        <div class="nav-right">
+            <div class="lang-switch">
+                <button class="lang-btn active" id="cnBtn">中</button>
+                <button class="lang-btn" id="enBtn">En</button>
+            </div>
+            <div class="nav-menu">
+                <span class="cn-content"><a href="#home">首页</a></span>
+                <span class="en-content"><a href="#home">Home</a></span>
+                <span class="cn-content"><a href="#pipe">管路产品</a></span>
+                <span class="en-content"><a href="#pipe">Pipe Products</a></span>
+                <span class="cn-content"><a href="#pump">泵类产品</a></span>
+                <span class="en-content"><a href="#pump">Pump Products</a></span>
+                <span class="cn-content"><a href="#advantage">核心优势</a></span>
+                <span class="en-content"><a href="#advantage">Core Advantages</a></span>
+                <span class="cn-content"><a href="#contact">联系我们</a></span>
+                <span class="en-content"><a href="#contact">Contact Us</a></span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 横幅 -->
+<section class="banner" id="home">
+    <!-- 中文内容 -->
+    <div class="cn-content">
+        <h1>罗维思实业（上海）有限公司</h1>
+        <p>专业管路+泵类产品研发、生产与销售，覆盖全品类流体输送管材管件、黄铜阀门及花园泵/增压泵，50年品质质保，德国先进工艺，适配家装、工业、市政、园林等全场景流体输送需求</p>
+        <a href="#pipe" class="btn">查看全系列产品</a>
+    </div>
+    <!-- 英文内容（含Luveris注释） -->
+    <div class="en-content">
+        <h1>Luveris Industrial (Shanghai) Co., Ltd</h1>
+        <p class="brand-note">Brand Note: Luveris is a custom brand name, derived from "Lover" with the suffix "-is", symbolizing reliability and customer-centricity</p>
+        <p>Professional R & D, production and sales of pipe and pump products, covering full range of fluid transmission pipes, fittings, brass valves, garden pumps and booster pumps. 50-year quality warranty, advanced German technology, suitable for home decoration, industry, municipal administration, garden and other fluid transmission scenarios</p>
+        <a href="#pipe" class="btn">View All Products</a>
+    </div>
+</section>
+
+<!-- 管路产品核心展示 -->
+<section class="container" id="pipe">
+    <!-- 中文内容 -->
+    <div class="cn-content">
+        <div class="section-title">
+            <h2>核心管路产品体系</h2>
+            <p>全品类管材+配套管件+黄铜阀门+暖通/施工配套，一站式流体输送解决方案，规格齐全可定制</p>
+        </div>
+        <div class="product-box">
+            <!-- 管材系列 -->
+            <div class="product-card">
+                <div class="product-img pipe-img">核心管材系列</div>
+                <div class="product-info">
+                    <h3>PEX/PE-RT管材系列</h3>
+                    <p>含PEX直管、PEX-AL-PEX铝塑多层管（常规/保温款）、PEX-A/EVOH/STABI管，食品级材质，耐温95℃/抗冻不裂。</p>
+                    <p class="pipe-spec">规格：16-63mm | 压力：PN10/12.5/16/20 | 应用：冷热水饮用/暖通</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pipe-img">核心管材系列</div>
+                <div class="product-info">
+                    <h3>PPR管材系列</h3>
+                    <p>纯塑PPR管（PN25/20/16）、PPR-AL-PPR稳态管、PPR-FB双层管、PPR-PE UV管，增强刚性/抗紫外线/耐腐蚀性。</p>
+                    <p class="pipe-spec">规格：Φ20-125mm | 工艺：热熔焊接 | 应用：家装/工业给排水</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pipe-img">核心管材系列</div>
+                <div class="product-info">
+                    <h3>UPVC/CPVC/PPH管材</h3>
+                    <p>含国标/德标/美标（SCH40/SCH80），耐腐耐热，适配化工、燃气、排水等特殊工况，全压力等级覆盖。</p>
+                    <p class="pipe-spec">规格：20-110mm | 压力：PN10/16/20/25 | 应用：化工/燃气/给排水</p>
+                </div>
+            </div>
+            <!-- 管件系列 -->
+            <div class="product-card">
+                <div class="product-img pipe-img">配套管件系列</div>
+                <div class="product-info">
+                    <h3>暖通分集水器</h3>
+                    <p>黄铜/不锈钢材质，多款型号（W01/W08/101/907等），2-12路可选，含排气阀/温控器等全配套。</p>
+                    <p class="pipe-spec">规格：DN25/32 | 接口：3/4"/1"/16mm | 应用：地暖/暖气片暖通系统</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pipe-img">配套管件系列</div>
+                <div class="product-info">
+                    <h3>通用连接管件</h3>
+                    <p>PEX压接/卡套/轴向管件、PPR热熔管件、黄铜管件（57-3/CW617），全规格适配各类管材对接。</p>
+                    <p class="pipe-spec">材质：黄铜/PPSU/PP/UPVC | 规格：16-32mm/1/2"-4" | 工艺：压接/热熔/螺纹</p>
+                </div>
+            </div>
+            <!-- 阀门系列 -->
+            <div class="product-card">
+                <div class="product-img pipe-img">黄铜阀门系列</div>
+                <div class="product-info">
+                    <h3>通用/专用黄铜球阀</h3>
+                    <p>FF/FM接口通用球阀、活接球阀、过滤球阀、暖气片专用球阀，PN25高压，耐温-20~120℃。</p>
+                    <p class="pipe-spec">规格：1/4"-4"/DN15-DN50 | 材质：环保黄铜 | 应用：冷热水/燃气/暖通</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pipe-img">黄铜阀门系列</div>
+                <div class="product-info">
+                    <h3>角阀/截止阀/止回阀</h3>
+                    <p>多款异径角阀、高压截止阀、防倒流止回阀，含过滤/排气功能，适配家装/工业精细场景。</p>
+                    <p class="pipe-spec">规格：1/2"-4" | 压力：PN25 | 应用：卫浴/给排水/泵组配套</p>
+                </div>
+            </div>
+            <!-- 配套系统/工具 -->
+            <div class="product-card">
+                <div class="product-img pipe-img">配套系统与工具</div>
+                <div class="product-info">
+                    <h3>暖通一站式配套系统</h3>
+                    <p>地暖/暖气片全套系统，含专用管材、分集水器、温控器、电热执行器、暖气片阀门，按需定制。</p>
+                    <p class="pipe-spec">适配：中央空调/家装地暖/工业暖通 | 工艺：模块化配套</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pipe-img">配套系统与工具</div>
+                <div class="product-info">
+                    <h3>施工专用配套工具</h3>
+                    <p>管材切割器（20-110mm）、热熔焊机（20-110mm）、耐温生料带，适配各类塑料管材施工。</p>
+                    <p class="pipe-spec">生料带耐温：-190~260℃ | 工具适配：PEX/PPR/UPVC/PE管</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 英文内容 -->
+    <div class="en-content">
+        <div class="section-title">
+            <h2>Core Pipe Product System</h2>
+            <p>Full range of pipes + matching fittings + brass valves + HVAC/construction accessories, one-stop fluid transmission solution with complete customizable specifications</p>
+        </div>
+        <div class="product-box">
+            <!-- PEX/PE-RT Pipes -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Core Pipe Series</div>
+                <div class="product-info">
+                    <h3>PEX/PE-RT Pipe Series</h3>
+                    <p>Including PEX straight pipe, PEX-AL-PEX multi-layer pipe (standard/insulated), PEX-A/EVOH/STABI pipe. Food-grade material, resistant to 95℃ high temperature and freezing without cracking.</p>
+                    <p class="pipe-spec">Spec: 16-63mm | Pressure: PN10/12.5/16/20 | Application: Cold & Hot Drinking Water/HVAC</p>
+                </div>
+            </div>
+            <!-- PPR Pipes -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Core Pipe Series</div>
+                <div class="product-info">
+                    <h3>PPR Pipe Series</h3>
+                    <p>Pure plastic PPR pipe (PN25/20/16), PPR-AL-PPR stabilizer pipe, PPR-FB double layer pipe, PPR-PE UV pipe. Enhanced rigidity, UV resistance and corrosion resistance.</p>
+                    <p class="pipe-spec">Spec: Φ20-125mm | Process: Hot Melt Welding | Application: Home Decoration/Industrial Water Supply & Drainage</p>
+                </div>
+            </div>
+            <!-- UPVC/CPVC/PPH Pipes -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Core Pipe Series</div>
+                <div class="product-info">
+                    <h3>UPVC/CPVC/PPH Pipes</h3>
+                    <p>GB/DIN/ASTM (SCH40/SCH80) standards, corrosion and heat resistant, suitable for chemical industry, gas, drainage and other special working conditions, full pressure rating coverage.</p>
+                    <p class="pipe-spec">Spec: 20-110mm | Pressure: PN10/16/20/25 | Application: Chemical Industry/Gas/Water Supply & Drainage</p>
+                </div>
+            </div>
+            <!-- HVAC Manifolds -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Matching Fittings Series</div>
+                <div class="product-info">
+                    <h3>HVAC Manifolds</h3>
+                    <p>Brass/stainless steel material, multiple models (W01/W08/101/907, etc.), 2-12 ways optional, with exhaust valve, thermostat and other full accessories.</p>
+                    <p class="pipe-spec">Spec: DN25/32 | Interface: 3/4"/1"/16mm | Application: Underfloor Heating/Radiator HVAC System</p>
+                </div>
+            </div>
+            <!-- General Connecting Fittings -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Matching Fittings Series</div>
+                <div class="product-info">
+                    <h3>General Connecting Fittings</h3>
+                    <p>PEX press/crimp/axial fittings, PPR hot melt fittings, brass fittings (57-3/CW617), full specifications for all pipe connection.</p>
+                    <p class="pipe-spec">Material: Brass/PPSU/PP/UPVC | Spec:16-32mm/1/2"-4" | Process: Press/Hot Melt/Thread</p>
+                </div>
+            </div>
+            <!-- Brass Ball Valves -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Brass Valve Series</div>
+                <div class="product-info">
+                    <h3>General/Special Brass Ball Valves</h3>
+                    <p>FF/FM interface general ball valve, union ball valve, filter ball valve, radiator special ball valve, PN25 high pressure, temperature resistant -20~120℃.</p>
+                    <p class="pipe-spec">Spec:1/4"-4"/DN15-DN50 | Material: Environmental Brass | Application: Cold & Hot Water/Gas/HVAC</p>
+                </div>
+            </div>
+            <!-- Angle/Globe/Check Valves -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Brass Valve Series</div>
+                <div class="product-info">
+                    <h3>Angle/Globe/Check Valves</h3>
+                    <p>Multiple reducing angle valves, high pressure globe valves, anti-backflow check valves, with filter/exhaust function, suitable for home decoration/industrial fine scenarios.</p>
+                    <p class="pipe-spec">Spec:1/2"-4" | Pressure: PN25 | Application: Sanitary/Water Supply & Drainage/Pump Unit Matching</p>
+                </div>
+            </div>
+            <!-- HVAC Integrated System -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Support Systems & Tools</div>
+                <div class="product-info">
+                    <h3>HVAC Integrated Matching System</h3>
+                    <p>Full underfloor heating/radiator system, including special pipes, manifolds, thermostats, electric actuators, radiator valves, customizable on demand.</p>
+                    <p class="pipe-spec">Adapt to: Central Air-Conditioning/Home Underfloor Heating/Industrial HVAC | Process: Modular Matching</p>
+                </div>
+            </div>
+            <!-- Construction Special Tools -->
+            <div class="product-card">
+                <div class="product-img pipe-img">Support Systems & Tools</div>
+                <div class="product-info">
+                    <h3>Construction Special Tools</h3>
+                    <p>Pipe cutter (20-110mm), hot melt welding machine (20-110mm), high temperature resistant Teflon tape, suitable for all plastic pipe construction.</p>
+                    <p class="pipe-spec">Teflon Temp: -190~260℃ | Tool Adapt: PEX/PPR/UPVC/PE Pipes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 泵类产品核心展示-天蓝色调 -->
+<section class="container" id="pump">
+    <!-- 中文内容 -->
+    <div class="cn-content">
+        <div class="section-title pump-title">
+            <h2>核心泵类产品体系</h2>
+            <p>自吸式花园泵+自动增压泵全系列，功率覆盖600W-1300W，适配园林浇灌、家用供水增压等场景，带热保护更安全</p>
+        </div>
+        <div class="product-box">
+            <!-- 花园泵基础款 -->
+            <div class="product-card">
+                <div class="product-img pump-img">花园泵-基础款</div>
+                <div class="product-info">
+                    <h3>600W/800W 自吸式花园泵</h3>
+                    <p>EKJ-602/802系列（P/S/I款），自吸式设计，适配园林浇灌、家用基础供水，电机带热保护，紧凑坚固易操作。</p>
+                    <p class="pump-spec">扬程：35m/40m | 流量：3.0/3.7m³/h | 吸程：7m | 接口：1"×1"</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pump-img">花园泵-进阶款</div>
+                <div class="product-info">
+                    <h3>800W/1300W 高效花园泵</h3>
+                    <p>LKJ-801P/1301S系列，轻量化自吸泵，电机带热保护，适配大流量园林浇灌、家用供水增压，防护等级IPX4。</p>
+                    <p class="pump-spec">扬程：40m/48m | 流量：3.6/5.0m³/h | 吸程：7m/8m | 接口：1"×1"</p>
+                </div>
+            </div>
+            <!-- 增压泵基础款 -->
+            <div class="product-card">
+                <div class="product-img pump-img">增压泵-基础款</div>
+                <div class="product-info">
+                    <h3>1000W/1200W 自吸式增压泵</h3>
+                    <p>EKJ-1002/1202系列（P/S/I款），家用供水增压专用，自吸式设计，电机带热保护，适配全屋供水加压。</p>
+                    <p class="pump-spec">扬程：45m/50m | 流量：4.5/5.0m³/h | 吸程：8m | 接口：1"×1"</p>
+                </div>
+            </div>
+            <!-- 增压泵自动款 -->
+            <div class="product-card">
+                <div class="product-img pump-img">增压泵-自动款</div>
+                <div class="product-info">
+                    <h3>600W/800W 自动增压泵</h3>
+                    <p>EKJ-602/802系列（PA/SA/IA款），按需自动启停，带19L压力罐，可选五向阀，适配家用精准供水增压。</p>
+                    <p class="pump-spec">扬程：35m/40m | 启压：1.4bar | 停压：2.4/2.8bar | 吸程：7m</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img pump-img">增压泵-自动高配款</div>
+                <div class="product-info">
+                    <h3>1000W/1200W 自动增压泵</h3>
+                    <p>EKJ-1002/1202系列（PA/SA/IA/SA5款），自动启停，带19L压力罐，可选五向阀/电控开关，全屋增压优选。</p>
+                    <p class="pump-spec">扬程：45m/50m | 启压：1.4bar | 停压：2.8bar | 吸程：8m</p>
+                </div>
+            </div>
+            <!-- 泵类核心特性 -->
+            <div class="product-card">
+                <div class="product-img pump-img">泵类核心特性</div>
+                <div class="product-info">
+                    <h3>全系列泵类通用优势</h3>
+                    <p>所有泵类均采用IPX4防水防护，配1.5m专用电源线，介质最高输送温度35℃，结构紧凑、重量轻，安装操作便捷。</p>
+                    <p class="pump-spec">防护等级：IPX4 | 电源线：HO7RN-F 1.5m | 介质温：≤35℃ | 核心保护：电机热保护</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 英文内容 -->
+    <div class="en-content">
+        <div class="section-title pump-title">
+            <h2>Core Pump Product System</h2>
+            <p>Self-priming garden pump + automatic booster pump full series, power coverage 600W-1300W, suitable for garden irrigation, household water supply booster, with thermal protection for more safety</p>
+        </div>
+        <div class="product-box">
+            <!-- Basic Garden Pump -->
+            <div class="product-card">
+                <div class="product-img pump-img">Garden Pump - Basic Type</div>
+                <div class="product-info">
+                    <h3>600W/800W Self-priming Garden Pump</h3>
+                    <p>EKJ-602/802 Series (P/S/I Type), self-priming design, suitable for garden irrigation and household basic water supply, motor with thermal protection, compact and robust, easy to operate.</p>
+                    <p class="pump-spec">Max. Head: 35m/40m | Max. Flow: 3.0/3.7m³/h | Max. Suction Depth: 7m | Outlet/Inlet: 1"×1"</p>
+                </div>
+            </div>
+            <!-- Advanced Garden Pump -->
+            <div class="product-card">
+                <div class="product-img pump-img">Garden Pump - Advanced Type</div>
+                <div class="product-info">
+                    <h3>800W/1300W High-efficiency Garden Pump</h3>
+                    <p>LKJ-801P/1301S Series, lightweight self-priming pump, motor with thermal protection, suitable for high-flow garden irrigation and household water supply booster, protection class IPX4.</p>
+                    <p class="pump-spec">Max. Head: 40m/48m | Max. Flow: 3.6/5.0m³/h | Max. Suction Depth: 7m/8m | Outlet/Inlet: 1"×1"</p>
+                </div>
+            </div>
+            <!-- Basic Booster Pump -->
+            <div class="product-card">
+                <div class="product-img pump-img">Booster Pump - Basic Type</div>
+                <div class="product-info">
+                    <h3>1000W/1200W Self-priming Booster Pump</h3>
+                    <p>EKJ-1002/1202 Series (P/S/I Type), dedicated to household water supply booster, self-priming design, motor with thermal protection, suitable for whole-house water supply pressurization.</p>
+                    <p class="pump-spec">Max. Head: 45m/50m | Max. Flow: 4.5/5.0m³/h | Max. Suction Depth: 8m | Outlet/Inlet: 1"×1"</p>
+                </div>
+            </div>
+            <!-- Automatic Booster Pump -->
+            <div class="product-card">
+                <div class="product-img pump-img">Booster Pump - Automatic Type</div>
+                <div class="product-info">
+                    <h3>600W/800W Automatic Booster Pump</h3>
+                    <p>EKJ-602/802 Series (PA/SA/IA Type), automatic on/off according to demand, with 19L pressure tank, optional five-way valve, suitable for household precise water supply booster.</p>
+                    <p class="pump-spec">Max. Head: 35m/40m | Start Pressure: 1.4bar | Stop Pressure: 2.4/2.8bar | Max. Suction Depth: 7m</p>
+                </div>
+            </div>
+            <!-- High-end Automatic Booster Pump -->
+            <div class="product-card">
+                <div class="product-img pump-img">Booster Pump - High-end Automatic Type</div>
+                <div class="product-info">
+                    <h3>1000W/1200W Automatic Booster Pump</h3>
+                    <p>EKJ-1002/1202 Series (PA/SA/IA/SA5 Type), automatic on/off, with 19L pressure tank, optional five-way valve/electric switch, preferred for whole-house booster.</p>
+                    <p class="pump-spec">Max. Head: 45m/50m | Start Pressure: 1.4bar | Stop Pressure: 2.8bar | Max. Suction Depth: 8m</p>
+                </div>
+            </div>
+            <!-- Core Features of Pumps -->
+            <div class="product-card">
+                <div class="product-img pump-img">Core Features of Pumps</div>
+                <div class="product-info">
+                    <h3>General Advantages of All Pump Series</h3>
+                    <p>All pumps adopt IPX4 waterproof protection, equipped with 1.5m special power cable, maximum medium delivery temperature 35℃, compact structure, light weight, easy to install and operate.</p>
+                    <p class="pump-spec">Protection Class: IPX4 | Power Cable: HO7RN-F 1.5m | Medium Temp.: ≤35℃ | Core Protection: Motor Thermal Protection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 核心优势 -->
+<section class="advantage" id="advantage">
+    <!-- 中文内容 -->
+    <div class="cn-content">
+        <div class="section-title">
+            <h2>核心产品优势</h2>
+            <p>深耕流体输送领域，管路+泵类一站式供应，以品质为核心，适配全场景使用需求</p>
+        </div>
+        <div class="advantage-list">
+            <div class="item">
+                <div class="item-icon">🛡️</div>
+                <h4>50年品质质保</h4>
+                <p>管路全系产品享50年质保，泵类核心部件质保保障，原材料与生产全流程严苛检测</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🔧</div>
+                <h4>德国先进工艺</h4>
+                <p>管路采用德国先进生产技术，泵类按工业标准研发制造，设备精良，工艺成熟稳定性高</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">✅</div>
+                <h4>权威标准认证</h4>
+                <p>管路通过SKZ/DVGW/CE/ISO等国际认证，泵类符合工业防护与安全使用标准，品质可靠</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🎨</div>
+                <h4>全维度可定制</h4>
+                <p>管路颜色、规格、接口按需定制，泵类可搭配压力罐/五向阀/电控开关等选配配件</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🔗</div>
+                <h4>一站式配套供应</h4>
+                <p>管路+泵类全品类覆盖，管材-管件-阀门-泵体成套搭配，无需多渠道采购，省心高效</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🌐</div>
+                <h4>全场景适配</h4>
+                <p>覆盖家装/工业/市政/园林/化工等全场景，冷热水/燃气/化工介质/浇灌供水全适配</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 英文内容 -->
+    <div class="en-content">
+        <div class="section-title">
+            <h2>Core Advantages</h2>
+            <p>Deeply engaged in the fluid transmission field, one-stop supply of pipes and pumps, quality-oriented, suitable for all-scenario use needs</p>
+        </div>
+        <div class="advantage-list">
+            <div class="item">
+                <div class="item-icon">🛡️</div>
+                <h4>50-year Quality Warranty</h4>
+                <p>All pipe products enjoy 50-year warranty, core components of pumps are guaranteed, raw materials and production are strictly inspected throughout the process</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🔧</div>
+                <h4>Advanced German Technology</h4>
+                <p>Pipes adopt advanced German production technology, pumps are R & D and manufactured according to industrial standards, with sophisticated equipment and mature technology, high stability</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">✅</div>
+                <h4>Authoritative Standard Certification</h4>
+                <p>Pipes have passed international certifications such as SKZ/DVGW/CE/ISO, pumps comply with industrial protection and safe use standards, reliable quality</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🎨</div>
+                <h4>Full-dimensional Customization</h4>
+                <p>Pipe color, specification and interface can be customized on demand, pumps can be equipped with optional accessories such as pressure tank/five-way valve/electric switch</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🔗</div>
+                <h4>One-stop Supporting Supply</h4>
+                <p>Full range of pipes and pumps, complete set of pipes-fittings-valves-pumps, no need for multi-channel procurement, convenient and efficient</p>
+            </div>
+            <div class="item">
+                <div class="item-icon">🌐</div>
+                <h4>All-scenario Adaptation</h4>
+                <p>Covering home decoration/industry/municipal administration/garden/chemical industry and other scenarios, fully adaptable to cold and hot water/gas/chemical medium/irrigation water supply</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 底部 -->
+<section id="contact"></section>
+<footer>
+    <div class="cn-content">
+        <p>罗维思实业（上海）有限公司 | 专业管路&泵类产品一站式供应商</p>
+        <p>全品类流体输送解决方案 · 品质保障 · 定制服务 · 全国供应</p>
+        <p class="copyright">© 2026 罗维思实业（上海）有限公司 版权所有 丨 商务产品官方网站</p>
+    </div>
+    <div class="en-content">
+        <p>Luveris Industrial (Shanghai) Co., Ltd | Professional One-stop Pipe & Pump Supplier</p>
+        <p>Full-range Fluid Transmission Solutions · Quality Assurance · Customized Service · National Supply</p>
+        <p class="copyright">© 2026 Luveris Industrial (Shanghai) Co., Ltd. All Rights Reserved | Official Business Product Website</p>
+    </div>
+</footer>
+
+</body>
+</html>
